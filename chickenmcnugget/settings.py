@@ -80,32 +80,8 @@ WSGI_APPLICATION = 'chickenmcnugget.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if RUN_LOCAL_DB:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('LOCAL_DB_NAME', default='test'),
-            'USER': config('LOCAL_DB_USER', default=''),
-            'HOST': 'localhost',
-            'PORT': 5432
-        }
-    }
-    # If no password is used, the value must not appear in the configuration
-    # Only add the password if one is actually set
-    LOCAL_DB_PASSWORD = config('LOCAL_DB_PASSWORD', default='')
-    if LOCAL_DB_PASSWORD:
-        DATABASES['default']['PASSWORD'] = LOCAL_DB_PASSWORD
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('DB_NAME', default=None),
-            'USER': config('DB_USER', default=None),
-            'PASSWORD': config('DB_PASSWORD', default=None),
-            'HOST': config('DB_HOST', default=None),
-            'PORT': 5432
-        }
-    }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
